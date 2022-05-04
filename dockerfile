@@ -1,11 +1,11 @@
-FROM node:16.10.0-alpine3.14 as build
+FROM node:16.15.0-alpine3.15 as build
 
 WORKDIR /app
 COPY . .
 RUN yarn install \
    && yarn build
 
-FROM nginx:1.21.3-alpine
+FROM nginx:1.21.6-alpine
 
 RUN apk update \
    && apk upgrade \
