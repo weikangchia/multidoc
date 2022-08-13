@@ -13,6 +13,7 @@ const { Option } = Select;
 
 function App() {
   const openAPIs = getOpenAPIs();
+  openAPIs.sort((a, b) => a.label.localeCompare(b.label));
   
   const [currentUrl, setCurrentUrl] = useState(openAPIs[0].url);
   const onChange = (value: SetStateAction<string>) => {
