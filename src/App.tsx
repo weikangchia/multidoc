@@ -11,6 +11,8 @@ import { getOpenAPIs } from "./data/openApi";
 const { Header, Content } = Layout;
 const { Option } = Select;
 
+const APP_NAME = 'Multidoc';
+
 function App() {
   const openAPIs = getOpenAPIs();
   openAPIs.sort((a, b) => a.label.localeCompare(b.label));
@@ -20,17 +22,17 @@ function App() {
     setCurrentUrl(value);
   };
 
+  const [pageTitle, setPageTitle] = useState(APP_NAME);
   useEffect(() => {
     if (window._env_.PAGE_TITLE) {
-      document.title = window._env_.PAGE_TITLE;
-    } else {
-      document.title = 'Multidoc';
+      setPageTitle(`${window._env_.PAGE_TITLE} - ${APP_NAME}`);
+      document.title = pageTitle;
     }
-  }, []);
+  }, [pageTitle]);
 
   return (
     <Layout>
-      <Header style={{ color: 'white' }}>MultiDoc</Header>
+      <Header style={{ color: 'white' }}>{pageTitle}</Header>
       <Content>
         <Select defaultValue={openAPIs[0].label} style={{ width: '100%' }} onChange={onChange}>
           {openAPIs.map((openapi: IOpenAPI) => (
