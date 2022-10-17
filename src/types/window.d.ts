@@ -1,7 +1,8 @@
 declare global {
   interface Window {
     '_env_': {
-      OPEN_APIS: any
+      OPEN_APIS: any,
+      PAGE_TITLE: string
     };
   }
 }
