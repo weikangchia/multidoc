@@ -5,7 +5,7 @@ COPY . .
 RUN yarn install \
    && yarn build
 
-FROM nginx:1.23.1-alpine
+FROM nginx:1.27.2-alpine
 
 RUN apk update \
    && apk upgrade \
